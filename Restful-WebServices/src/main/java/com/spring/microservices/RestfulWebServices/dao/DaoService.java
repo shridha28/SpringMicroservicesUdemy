@@ -2,6 +2,7 @@ package com.spring.microservices.RestfulWebServices.dao;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -41,5 +42,17 @@ public class DaoService {
 		 * for(User user:users) { if(user.getId().intValue()==id.intValue()) return
 		 * user; } return new User();
 		 */
+	}
+	
+	public User delete(Integer id){
+		 Iterator<User> it = users.iterator();
+		 while(it.hasNext()) {
+			 User user =  it.next();
+			 if(user.getId()==id) {
+				 users.remove(user);
+				 return user;
+			 }
+		 }
+		 return null;
 	}
 }
